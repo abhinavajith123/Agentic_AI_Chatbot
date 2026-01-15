@@ -8,7 +8,7 @@ Format:
 
 4. Install required dependencies
 ```
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
 6. Ingest the PDF and build the FAISS vector index
@@ -23,5 +23,6 @@ uvicorn app.main:app --reload
 ```
 streamlit run app/ui.py
 ```
+
 
 
