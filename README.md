@@ -60,10 +60,15 @@ streamlit run app/ui.py
 
 ## Sample queries :
 *What is Agentic AI*
+
 *What are agents*
-*What are the characteristics of an Agent* 
+
+*What are the characteristics of an Agent*
+
 *What are the categories and Types of Agentic Systems*
+
 *What is the capital of India*
+
 
 
 
