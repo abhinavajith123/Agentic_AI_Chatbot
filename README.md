@@ -1,3 +1,36 @@
+Short Architecture:
+###PDF Ingestion & Chunking:
+
+PDFs are loaded using pdfplumber, with each page’s text extracted and stored with page metadata.
+
+###Embedding & Vector Store (FAISS):
+
+Text chunks are converted into embeddings using SentenceTransformers (all-MiniLM-L6-v2).
+
+Embeddings are normalized and stored in a FAISS index for fast similarity search.
+
+Chunk metadata is saved alongside the index for retrieval.
+
+###RAG Pipeline (LangGraph):
+
+Retrieve Node: Retrieves top K most relevant chunks from FAISS based on query embeddings.
+
+Conditional Node: Checks if retrieved chunks are grounded using is_grounded.
+
+Generate Node: If grounded, generates an answer with gen_ans and calculates confidence based on chunk scores.
+
+Fallback Node: Returns a default response when no grounded information is found.
+
+Flow Control: LangGraph orchestrates execution with conditional edges, starting from retrieve and terminating at either generate or fallback.
+
+###API Layer (FastAPI):
+
+Exposes endpoints to accept user queries and return RAG-based responses.
+
+###UI Layer (Streamlit):
+
+Interactive frontend for submitting questions and displaying answers with confidence scores.
+
 1. Clone the repository
 
 2. Create a virtual environment (optional)
@@ -23,6 +56,7 @@ uvicorn app.main:app --reload
 ```
 streamlit run app/ui.py
 ```
+
 
 
 
